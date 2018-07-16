@@ -108,11 +108,10 @@ loginGoogle.addEventListener('click', () => {
 	   
 });
 
-
-
+/*
 window.onload = () =>{
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {	location.href = 'home.html';} 
 	  });
 }
-
+*/
