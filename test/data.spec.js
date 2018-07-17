@@ -1,32 +1,35 @@
 describe('data', () => {
-
-  it('registerUserProfile debería ser una funcion', () => {
+  let config = {
+    apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
+    authDomain: "pet-health-social-network.firebaseapp.com",
+    databaseURL: "https://pet-health-social-network.firebaseio.com",
+    projectId: "pet-health-social-network",
+    storageBucket: "pet-health-social-network.appspot.com",
+    messagingSenderId: "838633128523"
+  };
+  firebase.initializeApp(config);
+  
+  it('debería exponer función registerUserProfile en objeto global', () => {
     assert.isFunction(registerUserProfile);
   });
 
-  /*describe('computeUsersStats(users, progress, courses)', () => {
+  describe('registerUserProfile(userId, names, lastnames, email)', () => {
 
-    const cohort = fixtures.cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
-    const courses = Object.keys(cohort.coursesIndex);
-    const {
-      users,
-      progress
-    } = fixtures;
-
-    it('debería retornar arreglo de usuarios con propiedad stats', () => {
-      const processed = computeUsersStats(users, progress, courses);
-
-      assert.equal(users.length, processed.length);
-
-      processed.forEach(user => {
-        assert.ok(user.hasOwnProperty('stats'));
-        assert.isNumber(user.stats.percent);
-        assert.isObject(user.stats.exercises);
-        assert.isObject(user.stats.quizzes);
-        assert.isObject(user.stats.reads);
+    it('debería retornar 1', () => {
+      firebase.auth().signInWithEmailAndPassword('test@gmail.com', '123456')
+      .then((result) => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {	
+            const processed = registerUserProfile('Zct43ZRTSfRcjBIZRGvRdzOCvzR2', 'Sandra', 'Perez', 'test@gmail.com');
+            assert.equal(processed, 1);
+          } 
+        });
+      })
+      .catch((error) => {
+        let errorCode = error.code;
       });
     });
 
-  });*/
+  });
 
 });

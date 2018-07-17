@@ -71,12 +71,16 @@ buttonRegister.addEventListener('click', () => {
 });
 
 
+
 let providerFacebook = new firebase.auth.FacebookAuthProvider();
 
 loginFacebook.addEventListener('click', () => {
 	firebase.auth().signInWithPopup(providerFacebook).then(function(result) {
 		   const token = result.credential.accessToken;
 		   const user = result.user;
+		  // location.href = 'home.html';
+
+		   createPost(user.uid, user.displayName, 'picture', 'title', 'body');
 
 		 }).catch(function(error) {
 		   
@@ -97,6 +101,9 @@ loginGoogle.addEventListener('click', () => {
 		   const token = result.credential.accessToken;
 		   const user = result.user;
 
+
+		   location.href = 'home.html';
+
 		 }).catch(function(error) {
 		   
 		   const errorCode = error.code;
@@ -108,11 +115,4 @@ loginGoogle.addEventListener('click', () => {
 	   
 });
 
-
-
-window.onload = () =>{
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {	location.href = 'home.html';} 
-	  });
-}
 
