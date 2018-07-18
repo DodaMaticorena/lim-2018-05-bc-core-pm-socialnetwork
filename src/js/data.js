@@ -1,3 +1,4 @@
+
 //Esta funcion guarda en la tabla users los datos del usuario
 window.registerUserProfile = (userId, names, lastnames, email, picture = '') => {
 	firebase.database().ref('users/' + userId).set({
@@ -5,55 +6,43 @@ window.registerUserProfile = (userId, names, lastnames, email, picture = '') => 
 		lastnames: lastnames,
 		email: email,
 		picture: picture
-	}, (error) => {
-		return 0;
-	});
-
+	}
+		, (error) => {
+			return 0;
+		});
 	return 1;
 }
 
-window.createPost = (uid, username, picture, title, body) => {
-	//Generar idPost
-	/*firebase.database().ref('posts/' + userId + '/' + idPost).set({
-		title: title,
-		date: date,
-		image: image,
-		text: text,
-		category: category,// salud,alimentacion, adopcion, entretenimiento
-		state: state,// publico o privado
+//Esta funcion permite relacionar al usuario con sus posts
 
-	}, (error) => {
-		return 0;
-	});
-*/
-		// A post entry.
-		const postData = {
-		  author: username,
-		  uid: uid,
-		  body: body,
-		  title: title,
-		  starCount: 0,
-		  authorPic: picture
-		};
-	  
-		// Get a key for a new Post.
-		const newPostKey = firebase.database().ref().child('posts').push().key;
-	  
-		// Write the new post's data simultaneously in the posts list and the user's post list.
-		const updates = {};
-		updates['/posts/' + newPostKey] = postData;
-		updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-	  
-		return firebase.database().ref().update(updates);
+window.createPost = (postData) => {
 
-		console.log(firebase.database().ref().update(updates));
-	  
+	// Generar un id para la publicación.
+	const newPostKey = firebase.database().ref().child('posts').push().key;
+
+	// Registrar en el objeto posts y user-post la nueva publicación
+	const updates = {};
+	updates['/posts/' + newPostKey] = postData;
+	updates['/user-posts/' + postData.uid + '/' + newPostKey] = postData;
+
+	return firebase.database().ref().update(updates);
+
 }
+//Esta funcion permite editar posts
+window.editPost = (postId, postData) => {
 
-window.editPost = () => {
-	
+	const updates = {};
+	updates['/posts/' + postId] = postData;
+	updates['/user-posts/' + postData.uid + '/' + postId] = postData;
+
+	return firebase.database().ref().update(updates);
+
 }
+//Esta funcion permite eliminar posts
 
-window.deletePost = () => {
-	
+window.deletePost = (postId, uid) => {
+
+	firebase.database().ref('/posts/').child(postId).remove();
+	firebase.database().ref('/user-posts/' + uid + '/').child(postId).remove();
+
 }

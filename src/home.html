@@ -11,16 +11,44 @@
 </head>
 
 <body>
-	<h1>Hola, bienvenido!</h1>
-	<p>Ud. ha ingresado con el correo: <span id="message"></span></p>
+  <h1>Hola, bienvenido!</h1>
+  <p>Ud. ha ingresado con el correo:
+    <span id="message"></span>
+  </p>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-	
-  <button id ="logOut">Log Out</button>
 
+  <button id="logOut">Log Out</button>
+
+  <div id="probando funcionalidad">
+
+    <select id="optCategory">
+      <option value="salud">Salud</option>
+      <option value="alimentacion">Alimentacion</option>
+    </select>
+    <input type="text" id="inputTitle">
+    <input type="text" id="inputIntroduction">
+    <div>
+      <div id="contentImagen"></div>
+      <button id="btnImagen">Subir imagen</button>
+    </div>
+    <input id="inputContent">
+    <select id="optState">
+      <option value="publico">Publico</option>
+      <option value="privado">Privado</option>
+    </select>
+
+  </div>
+  <button id="addPost">Crear post</button>
+  <button id="editPost">Editar post</button>
+  <button id="deletePost">Eliminar post</button>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 
 </html>
