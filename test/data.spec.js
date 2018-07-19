@@ -13,22 +13,35 @@ describe('data', () => {
     assert.isFunction(registerUserProfile);
   });
 
-  describe('registerUserProfile(userId, names, lastnames, email)', () => {
+  it('debería exponer función createPost en objeto global', () => {
+    assert.isFunction(createPost);
+  });
 
-    it('debería retornar 1', () => {
-      firebase.auth().signInWithEmailAndPassword('test@gmail.com', '123456')
-      .then((result) => {
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {	
-            const processed = registerUserProfile('Zct43ZRTSfRcjBIZRGvRdzOCvzR2', 'Sandra', 'Perez', 'test@gmail.com');
-            assert.equal(processed, 1);
-          } 
-        });
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-      });
-    });
+  it('debería exponer función editPost en objeto global', () => {
+    assert.isFunction(editPost);
+  });
+
+  it('debería exponer función deletePost en objeto global', () => {
+    assert.isFunction(deletePost);
+  });
+
+  describe('registerUserProfile(dataUser)', () => {
+    let dataUser = {
+      id: null,
+      username: '',
+      email: '',
+      picture: ''
+    }
+
+    //const registerUserProfile = require('../src/js/data'); //jest import
+
+    /*it('debería retornar un objeto', () => {
+      assert.equal(typeof registerUserProfile(dataUser), 'object');
+    });*/
+    it('debería retornar un objeto', (done) => {
+      assert.equal(typeof registerUserProfile(dataUser), 'object');  
+      done();
+    }).timeout(5000);
 
   });
 

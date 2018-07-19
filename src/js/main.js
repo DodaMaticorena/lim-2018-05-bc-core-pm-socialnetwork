@@ -1,11 +1,11 @@
 // Initialize Firebase
 let config = {
-	apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
-	authDomain: "pet-health-social-network.firebaseapp.com",
-	databaseURL: "https://pet-health-social-network.firebaseio.com",
-	projectId: "pet-health-social-network",
-	storageBucket: "pet-health-social-network.appspot.com",
-	messagingSenderId: "838633128523"
+  apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
+  authDomain: "pet-health-social-network.firebaseapp.com",
+  databaseURL: "https://pet-health-social-network.firebaseio.com",
+  projectId: "pet-health-social-network",
+  storageBucket: "pet-health-social-network.appspot.com",
+  messagingSenderId: "838633128523"
 };
 firebase.initializeApp(config);
 
@@ -13,94 +13,178 @@ const buttonLogOut = document.getElementById('logOut');
 const optCategory = document.getElementById('optCategory');
 const optState = document.getElementById('optState');
 const inputTitle = document.getElementById('inputTitle');
-const inputIntroduction = document.getElementById('inputIntroduction');
 const contentImagen = document.getElementById('contentImagen');
 const btnImagen = document.getElementById('btnImagen');
 const inputContent = document.getElementById('inputContent');
 const btnAddPost = document.getElementById('addPost');
 const btnEditPost = document.getElementById('editPost');
 const btnDeletePost = document.getElementById('deletePost');
+const showPost = document.getElementById('showPost');
+const dataPost = document.getElementById('dataPost');
+const btnToAddPost = document.getElementById('toAddPost');
 
 buttonLogOut.addEventListener('click', () => {
-	firebase.auth().signOut();
-	location.href = 'index.html';
+  firebase.auth().signOut();
+  location.href = 'index.html';
 })
-/*window.onload = () =>{
-	const message = document.getElementById('message');
-	const emailMessage = localStorage.getItem('email');
 
-}*/
 
 // creando objeto que contiene la data del post
 
 let postData = {
-	uid: null,
-	title: null,
-	body: {
-		introduction: null,
-		image: null,
-		content: null,
-	},
-	date: null,
-	category: null,
-	state: null,
-	likes: null,
-	comentary: null
+  uid: null,
+  title: null,
+  image: null,
+  content: null,
+  date: null,
+  category: null,
+  state: null,
+  likes: null,
+  comentary: null
 
 };
 
-//obteniendo el id del usuario actual
-firebase.auth().onAuthStateChanged(function (user) {
-	if (user) {
-		postData.uid = user.uid;
-	}
-	return user
-});
+//Contiene la data de los post 
+
+let listUserPost = {}; //Solo post del usuario logueado
+let listGeneralPost = {}; //Todos los post a mostrarse en la portada principal
+
+const generalPost = (listGeneralPost) => {
+
+  const postsKeys = Object.keys(listGeneralPost);
+
+  postsKeys.forEach(postObject => {
+    showPost.innerHTML += `Title ${listGeneralPost[postObject].title} <br>
+    Content ${listGeneralPost[postObject].content} <br> 
+    Category ${listGeneralPost[postObject].category} <br> 
+    State ${listGeneralPost[postObject].state} <br><br>`
+  });
+}
+const userPost = (listUserPost) => {
+
+  const postsKeys = Object.keys(listUserPost);
+
+  postsKeys.forEach(postObject => {
+    showPost.innerHTML += `<div class = "${postObject} card col-xl-6 col-lg-6 col-md-6 col-sm-6" > Title ${listUserPost[postObject].title}<br>
+    Content ${listUserPost[postObject].content} <br> 
+    Category ${listUserPost[postObject].category} <br> 
+    State ${listUserPost[postObject].state} <br>
+    <div class = "buttonSel">
+    <button class = "${postObject} btn btn-primary" id="edit">Editar</button>  
+    <button class = "${postObject} btn btn-primary" id="delete">Eliminar</button> <br><br> 
+    </div>
+    </div>`
+
+  });
+}
+
+
+
+
+window.onload = () => {
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      postData.uid = user.uid; //obteniendo el id del usuario actual
+
+      firebase.database().ref('/user-posts/' + postData.uid).once('value').then(function (value) {
+
+        listUserPost = value.val();
+        userPost(listUserPost)
+        
+      });
+
+      firebase.database().ref('/posts/').once('value').then(function (value) {
+
+        listGeneralPost = value.val();
+
+      });
+
+    }
+
+  });
+
+  dataPost.style.display = 'none';
+
+}
+
+btnToAddPost.addEventListener('click',()=>{
+  dataPost.style.display = 'block';
+  showPost.style.display = 'none';
+  btnEditPost.style.display = 'none';
+})
+
+let idPost = '';//Guardar id post
 
 btnAddPost.addEventListener('click', () => {
 
-	postData.title = inputTitle.value;
-	postData.body.introduction = inputIntroduction.value;
-	postData.body.image = '',
-	postData.body.content = inputContent.value,
-	postData.date = new Date().getTime();
-	postData.category = optCategory.value,
-	postData.state = optState.value,
-	postData.likes = 0,
-	postData.comentary = {};
+  postData.title = inputTitle.value;
+  postData.image = '';
+  postData.content = inputContent.value;
+  postData.date = new Date().getTime();
+  postData.category = optCategory.value;
+  postData.state = optState.value;
+  postData.likes = 0;
+  postData.comentary = {};
 
-	createPost(postData);
-	alert('se registró post')
 
-	//Cambiar a muro principal
+  idPost = createPost(postData);
+  alert('se registró post')
+
+  location.reload();
 })
 
-btnEditPost.addEventListener('click', () =>{
-	postData.title = inputTitle.value;
-	postData.body.introduction = inputIntroduction.value;
-	postData.body.image = '',
-	postData.body.content = inputContent.value,
-	postData.date = new Date().getTime();
-	postData.category = optCategory.value,
-	postData.state = optState.value,
-	postData.likes = 0,
-	postData.comentary = {};
+let postClassName = null;
 
-	editPost('-LHaoe1ZpLw0Bd_dxTTg', postData);
-	alert('se editó post')
+showPost.addEventListener('click', (event) => {
+  postClassName = event.target.className;
+  postClassName = postClassName.split(' ');
 
+  console.log(postClassName)
+
+   if (event.target.nodeName === "BUTTON" && event.target.id == 'edit' ) {
+
+
+    dataPost.style.display = 'block';
+    showPost.style.display = 'none';
+    btnAddPost.style.display = 'none';
+
+    inputTitle.value = listUserPost[postClassName[0]].title;
+    inputContent.value = listUserPost[postClassName[0]].content;
+    optCategory.value = listUserPost[postClassName[0]].category;
+    optState.value = listUserPost[postClassName[0]].state;
+  
+ }
+
+  if (event.target.nodeName === "BUTTON" && event.target.id == 'delete' ) {
+
+    const postContentElement = document.getElementsByClassName(postClassName[0])[0]
+    
+    deletePost(postClassName[0], postData.uid);
+    alert('se eliminó post')
+
+    postContentElement.style.display = 'none';
+  }
+
+ 
+});
+
+
+btnEditPost.addEventListener('click', () => {
+
+  postData.title = inputTitle.value;
+  postData.image = '';
+  postData.content = inputContent.value;
+  postData.date = new Date().getTime();
+  postData.category = optCategory.value;
+  postData.state = optState.value;
+  postData.likes = 0;
+  postData.comentary = {};
+
+  editPost(postClassName, postData);
+  alert('se editó post')
+
+  location.reload();
 })
 
-btnDeletePost.addEventListener('click', () =>{
-	deletePost('-LHannf4mEXgDEhPhrSM', postData.uid);
-	alert('se eliminó post')	
-})
 
-/*
-firebase.firestore().collection("users").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-		// doc.data() is never undefined for query doc snapshots
-		console.log(doc)
-        console.log(doc.id, " => ", doc.data());
-    });
-});*/

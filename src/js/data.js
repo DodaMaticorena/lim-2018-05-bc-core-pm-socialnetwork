@@ -1,16 +1,26 @@
-
+const dataRegisterUser = {
+	id: null,
+	username: '',
+	email: '',
+	picture: ''
+}
 //Esta funcion guarda en la tabla users los datos del usuario
-window.registerUserProfile = (userId, names, lastnames, email, picture = '') => {
-	firebase.database().ref('users/' + userId).set({
-		names: names,
-		lastnames: lastnames,
-		email: email,
-		picture: picture
-	}
-		, (error) => {
-			return 0;
-		});
-	return 1;
+window.registerUserProfile = (dataUser) => {
+
+	dataRegisterUser.id = dataUser.id;
+	dataRegisterUser.username = dataUser.username;
+	dataRegisterUser.email = dataUser.email;
+	dataRegisterUser.picture = dataUser.picture;
+	
+	firebase.database().ref('users/' + dataUser.id).set({
+		username: dataUser.username,
+		email: dataUser.email,
+		picture: dataUser.picture
+	}, (error) => {
+		return 0;
+	});
+
+	return dataRegisterUser;
 }
 
 //Esta funcion permite relacionar al usuario con sus posts
@@ -25,7 +35,9 @@ window.createPost = (postData) => {
 	updates['/posts/' + newPostKey] = postData;
 	updates['/user-posts/' + postData.uid + '/' + newPostKey] = postData;
 
-	return firebase.database().ref().update(updates);
+	firebase.database().ref().update(updates);
+	
+	return newPostKey;
 
 }
 //Esta funcion permite editar posts
@@ -41,7 +53,7 @@ window.editPost = (postId, postData) => {
 //Esta funcion permite eliminar posts
 
 window.deletePost = (postId, uid) => {
-
+	
 	firebase.database().ref('/posts/').child(postId).remove();
 	firebase.database().ref('/user-posts/' + uid + '/').child(postId).remove();
 
