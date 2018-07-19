@@ -135,6 +135,12 @@ body {
 	border-color: #B03E20;
 }
 
+.text-center,
+.navbar-brand {
+    font-family: 'Chela One', cursive;
+    color: #333333;
+}
+
 @media (max-width: 540px) {
 	.panel-login {
 		margin-top: 25px;
