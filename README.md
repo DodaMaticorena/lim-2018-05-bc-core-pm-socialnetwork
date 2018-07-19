@@ -69,6 +69,8 @@ El objetivo principal de los usuarios es tener una red social donde puedan pregu
 
 Sus mascotas son parte de la familia, entonces también es importante poder encontrar consejos e información sobre productos que pueden adquirir para sus mascotas. Asimismo, poder compartir momentos mediante fotos y videos.
 
+El público objetivo se estableció utilizando las entrevistas y las encuestas, las que arrojaron que el target eran las personas de 21 a 35 años de edad.
+
 
 #### Proceso de diseño
 
@@ -83,6 +85,12 @@ El sketch del Log in fue ideado al investigar y hacer benchmarking de redes soci
 
 ![Sin titulo](/img/sketch-1-social-network.JPG)
 ![Sin titulo](/img/sketch-2-social-network.JPG)
+
+El sketch de la página de inicio se dio con la idea general de redes sociales.
+
+![Sin titulo](/img/sketch-home-desktop.jpeg)
+![Sin titulo](/img/sketch-home-movil.jpeg)
+![Sin titulo](/img/sketch-home-movil2.jpeg)
 
 
 ## Prototipo de Alta Fidelidad
@@ -100,3 +108,8 @@ Para construir el Log in utilizamos Frameworks con los colores acordados. En est
 
 El Log in se inspiró al hacer la investigación y el benchmarking. 
 
+**_Maquetación del Home_**
+
+La maquetación de la página principal se hizo utilizando Bootstrap. Resultó ser un reto que aún estamos atravesando pero que ha resultado bastante enriquecedor para el aprendizaje de nuevas herramientas digitales.
+
+La idea de la Red Social se dio de cierta forma y en el camino fue cambiando un poco.
