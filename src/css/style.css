@@ -148,6 +148,18 @@ body {
 .buttonSel{
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
+	
+}
+.mainCotainer{
+	display: flex;
+	justify-content: center;
+}
+#showPost{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
 }
 @media (max-width: 540px) {
 	.panel-login {
