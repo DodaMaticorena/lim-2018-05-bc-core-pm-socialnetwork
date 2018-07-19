@@ -28,6 +28,14 @@ body {
 	padding: 10px;
 }
 
+.logo-home {
+	border: 1px solid #DBDBDB;
+  border-radius: 50%;
+  background-color: #009E66;
+	color: #fff;
+  border-radius: 50%;
+  padding: 4px 8px 6px 8px;
+}
 .panel-login h2 {
 	font-weight: normal;
 	margin-bottom: 16px;
@@ -124,6 +132,7 @@ body {
 	background-color: #DC4D28;
 }
 
+
 .panel-login .button-google span {
 	position: absolute;
 	left: 0;
@@ -140,7 +149,26 @@ body {
     font-family: 'Chela One', cursive;
     color: #333333;
 }
-
+.options{
+	display: flex;
+	flex-direction: row;
+}
+.buttonSel{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	
+}
+.mainCotainer{
+	display: flex;
+	justify-content: center;
+}
+#showPost{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+}
 @media (max-width: 540px) {
 	.panel-login {
 		margin-top: 25px;
