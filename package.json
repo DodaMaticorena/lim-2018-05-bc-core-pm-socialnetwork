@@ -8,7 +8,7 @@
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint && npm run htmlhint",
     "test-browser": "opener ./test/index.html",
-    "test-node": "nyc mocha --timeout 10000 ./test/headless.js && nyc report --reporter=html",
+    "test-node": "nyc mocha ./test/headless.js && nyc report --reporter=html",
     "test": "npm run test-node && npm run test-browser jest"
   },
   "dependencies": {
@@ -19,7 +19,9 @@
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",
     "opener": "^1.4.3",
-    "server": "^1.0.18",
-    "jest": "^23.3"
+    "server": "^1.0.18"
+  },
+  "devDependencies": {
+    "firebase-mock": "^2.2.4"
   }
 }

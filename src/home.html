@@ -7,43 +7,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <h1>Hola, bienvenido!</h1>
-  <p>Tu publicaciones:
-    <span id="message"></span>
-  </p>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #35CD97">
+    <span class="logo-home"><i class="fas fa-paw"></i></span><a class="navbar-brand" href="#">SoyTuPata</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarsExample04" style>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a id='toAddPost' class="nav-link" href="#">Crear Post</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Categorías</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="#">Salud</a>
+            <a class="dropdown-item" href="#">Alimentación</a>
+            <a class="dropdown-item" href="#">Mascotas Perdidas</a>
+            <a class="dropdown-item" href="#">Entretenimiento</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a id="logOut" class="nav-link" href="#">Salir</a>
+        </li>
+      </ul>
+      <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar">
+          <span class="input-group-btn">
+            <button class="btn btn-light" type="button"><img src="img/search.png" alt="" class="search-img"></button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
 
 
-
-  <button id='toAddPost' class="btn btn-dark">Agregar</button>
-  <button id="logOut" class="btn btn-warning">Log Out</button>
   <hr>
     <div class="mainCotainer" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 panel-login">
       <div id="showPost" class="col-xl-5 col-lg-5 col-md-5 col-sm-5 "></div>
       <div id="dataPost" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 panel-login">
         <div class="options">
-          <p class="font-weight-bold col-sm-2">Categoria</p>
+          <p class="font-weight-bold col-sm-2">Categoría</p>
           <select id="optCategory" class="custom-select col-sm-4">
             <option value="salud">Salud</option>
-            <option value="alimentacion">Alimentacion</option>
+            <option value="alimentacion">Alimentación</option>
           </select>
 
 
           <p class="font-weight-bold col-sm-2">Estado</p>
           <select id="optState" class="custom-select col-sm-4">
-            <option value="publico">Publico</option>
+            <option value="publico">Público</option>
             <option value="privado">Privado</option>
           </select>
         </div>
         <br>
-        <p class="font-weight-bold">Titulo</p>
+        <p class="font-weight-bold">Título</p>
         <input type="text" id="inputTitle" class="form-control" placeholder="Ingrese el encabezado">
         <div>
           <div id="contentImagen"></div>
@@ -59,7 +93,10 @@
       </div>
     </div>
 
-
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 

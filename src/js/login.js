@@ -23,12 +23,11 @@ const loginFacebook = document.getElementById('loginFacebook');
 const loginGoogle = document.getElementById('loginGoogle');
 
 buttonLogin.addEventListener('click', () => {
-	firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-		.then((result) => {
-			localStorage.setItem('email', email.value);
+	const callback = (error, result) => {
+		if (!error) {
+			localStorage.setItem('email', result.email);
 			location.href = 'home.html';
-		})
-		.catch((error) => {
+		} else {
 			let errorCode = error.code;
 			if (errorCode === 'auth/wrong-password') {
 				alert('Contraseña incorrecta.');
@@ -36,11 +35,54 @@ buttonLogin.addEventListener('click', () => {
 			else {
 				alert('Usuario o contraseña incorrecto');
 			}
-		});
+		}
+	}
+	logIn(email.value, password.value, callback);
+	
 });
-
+		
 buttonRegister.addEventListener('click', () => {
-	firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passRegister.value)
+	const dataUser = {
+		id: null,
+		username: '',
+		email: '',
+		picture: ''
+	}
+	
+	dataUser.username = names.value + ' '+ lastnames.value;
+	dataUser.email = emailRegister.value;
+	const callback = (error, result) => {
+		
+		if (!error) {
+
+			dataUser.id = result.user.uid;
+			console.log(result.user.uid);
+			console.log(dataUser)
+			registerUserProfile(dataUser);
+			alert('El usuario ha sido registrado, Ahora ya puede ingresar');
+			linkLogin.click();
+			email.value = result.user.email;
+			console.log(result.user.email);
+		} else {
+			let errorCode = error.code;
+			if (errorCode === 'auth/email-already-in-use') {
+				//alert('El correo ya se encuentra registrado.');
+			}
+			else if (errorCode === 'auth/weak-password') {
+				//alert('La contraseña es demasiado debil.');
+			}
+			else if (errorCode === 'auth/invalid-email') {
+				//alert('El correo es invalido.');
+			}
+			else {
+				//alert('El usuario no se ha podido registrar');
+			}
+		}	
+	}
+	createUser(emailRegister.value, passRegister.value, callback);
+
+
+	/* firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passRegister.value)
 		.then((result) => {
 			firebase.auth().onAuthStateChanged((user) => {
 				if (user) {	
@@ -54,7 +96,6 @@ buttonRegister.addEventListener('click', () => {
 					dataUser.username = names.value + ' '+ lastnames.value;
 					dataUser.email = emailRegister.value;
 					const registeredUserWith = registerUserProfile(dataUser);
-					console.log(typeof(registeredUserWith));
 					if(typeof(registeredUserWith) == 'object') {
 						alert('El usuario ha sido registrado, Ahora ya puede ingresar');
 						linkLogin.click();
@@ -76,10 +117,8 @@ buttonRegister.addEventListener('click', () => {
 			else if (errorCode === 'auth/invalid-email') {
 				alert('El correo es invalido.');
 			}
-		});
+		}); */
 });
-
-
 
 let providerFacebook = new firebase.auth.FacebookAuthProvider();
 
