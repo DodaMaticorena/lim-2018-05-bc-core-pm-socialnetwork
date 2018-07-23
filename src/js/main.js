@@ -65,6 +65,7 @@ const userPost = (listUserPost) => {
   const postsKeys = Object.keys(listUserPost);
 
   postsKeys.forEach(postObject => {
+    console.log(postObject);
     showPost.innerHTML += `<div class = "${postObject} card panel-login">
     <h5 class="card-title">${listUserPost[postObject].title}</h5><hr>
     <img class="card-img-top" src="http://images.estampas.com/2012/07/01/mascotas.jpg.525.0.thumb" width="40" height="350">
@@ -72,6 +73,7 @@ const userPost = (listUserPost) => {
     <div class = "buttonSel">
     <button class = "${postObject} btn btn-light col-sm-3" id="edit">Editar <i class="fas fa-edit"></i></button>
     <button class = "${postObject} btn btn-light col-sm-3" id="delete">Eliminar <i class="fas fa-trash-alt"></i></button> 
+    <button class = "${postObject} btn btn-light col-sm-3" id="like">Me gusta <i class="far fa-thumbs-up"></i> <span id="badge-${postObject}" class="badge badge-success">${listUserPost[postObject].likes}</span></button>
     </div>
     </div>`
 
@@ -91,7 +93,7 @@ window.onload = () => {
       firebase.database().ref('/user-posts/' + postData.uid).once('value').then(function (value) {
 
         listUserPost = value.val();
-        userPost(listUserPost)
+        userPost(listUserPost);
         
       });
 
@@ -141,7 +143,7 @@ showPost.addEventListener('click', (event) => {
   postClassName = event.target.className;
   postClassName = postClassName.split(' ');
 
-  console.log(postClassName)
+  console.log(postClassName);
 
    if (event.target.nodeName === "BUTTON" && event.target.id == 'edit' ) {
 
@@ -165,6 +167,11 @@ showPost.addEventListener('click', (event) => {
     alert('se eliminó post')
 
     postContentElement.style.display = 'none';
+  }
+
+  if (event.target.nodeName === "BUTTON" && event.target.id == 'like' ){
+    const likeBadge = document.getElementById('badge-'+postClassName[0]);
+    likePost(postClassName[0], postData.uid, likeBadge);
   }
 
  
