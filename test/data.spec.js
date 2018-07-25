@@ -1,12 +1,12 @@
-firebase.initializeApp();
+mocksdk.initializeApp();
 describe('createUser', () => {
   it('debería ser funcion', () => {
     assert.isFunction(createUser);
   });
   it('Deberia crear un usuario con password 12345678', () => {
     createUser('usuario1@gmail.com', '1');
-    //firebase.auth().flush();
-    firebase.auth().getUserByEmail('usuario1@gmail.com').then(function(user) {
+    // mocksdk.auth().flush();
+    mocksdk.auth().getUserByEmail('usuario1@gmail.com').then(function(user) {
       console.log(user);
       assert.equal(user, 'ben was created');
     });
@@ -20,13 +20,13 @@ describe('createUser', () => {
 /* describe('data', () => {
    let config = {
     apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
-    authDomain: "pet-health-social-network.firebaseapp.com",
-    databaseURL: "https://pet-health-social-network.firebaseio.com",
+    authDomain: "pet-health-social-network.mocksdkapp.com",
+    databaseURL: "https://pet-health-social-network.mocksdkio.com",
     projectId: "pet-health-social-network",
     storageBucket: "pet-health-social-network.appspot.com",
     messagingSenderId: "838633128523"
   };
-  firebase.initializeApp(config);
+  mocksdk.initializeApp(config);
 
   
   xit('debería exponer función registerUserProfile en objeto global', () => {
