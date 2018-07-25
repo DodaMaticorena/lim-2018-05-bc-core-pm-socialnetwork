@@ -2,6 +2,10 @@ body {
 	height: 100%;
 }
 
+.hidden {
+	display: none;
+}
+
 .panel-login {
   background-color: #fff;
 	padding: 10px 20px;
@@ -282,6 +286,22 @@ outline: none;
 .div-container > .wrapper.move input:focus{
 	border-color: #009E66;
 }
+/* Estilos de los post*/
+.post {
+	background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+	border-radius: .25rem;
+	position: relative;
+}
+
+.post .date, .post .category {
+	color: #5D666F;
+}
+
+.post .date {
+	margin-left: 10px;
+}
+
 @media (max-width: 767px){
 	.div-container .button{
 		background: #b5b5b5;

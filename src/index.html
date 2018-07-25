@@ -25,10 +25,12 @@
       <button class="button">Registrarse</button>
     </div>
     <div class="wrapper">
-      
+
       <div id="login" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 panel-login">
         <div class="logo">
-          <span><i class="fas fa-paw"></i></span>
+          <span>
+            <i class="fas fa-paw"></i>
+          </span>
         </div>
         <h2 class="text-center">SoyTuPata</h2>
         <form>
@@ -41,13 +43,23 @@
           <button type="button" class="btn btn-success" id="button-login">Ingresar</button>
         </form>
         <p class="lines">O</p>
-        <button type="button" class="btn btn-primary button-facebook" id="loginFacebook"><span><i class="fab fa-facebook-f"></i></span>Ingresar con facebook</button>
-        <button type="button" class="btn btn-danger button-google" id="loginGoogle"><span><i class="fab fa-google"></i></span>Ingresar con google</button>
+        <div id="eventLogin">
+          <button type="button" class="btn btn-primary button-facebook" id="loginFacebook">
+            <span>
+              <i class="fab fa-facebook-f"></i>
+            </span>Ingresar con facebook</button>
+          <button type="button" class="btn btn-danger button-google" id="loginGoogle">
+            <span>
+              <i class="fab fa-google"></i>
+            </span>Ingresar con google</button>
+        </div>
       </div>
 
       <div id="register" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 panel-login">
         <div class="logo">
-          <span><i class="fas fa-paw"></i></span>
+          <span>
+            <i class="fas fa-paw"></i>
+          </span>
         </div>
         <h2 class="text-center">SoyTuPata</h2>
         <form>
@@ -56,11 +68,11 @@
           </div>
           <div class="form-group">
             <input type="email" class="form-control" id="lastnames" placeholder="Apellidos">
-          </div>  
+          </div>
           <div class="form-group">
             <input type="email" class="form-control" id="emailRegister" placeholder="Correo">
           </div>
-          <div class="form-group">  
+          <div class="form-group">
             <input type="password" class="form-control" id="passRegister" placeholder="Contrase&ntilde;a">
           </div>
           <button type="button" class="btn btn-success" id="buttonRegister">Registrar</button>
@@ -68,32 +80,32 @@
       </div>
 
     </div>
-  </div>	
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
   <script src="js/data.js"></script>
   <script src="js/login.js"></script>
-  
+
 
   <script>
-    $(document).ready(function(){
-			$('.div-container .rgstr-btn button').click(function(){
-				$('.div-container .wrapper').addClass('move');
-				$('.body').css('background','#35CD97');
-				$('.div-container .login-btn button').removeClass('active');
-				$(this).addClass('active');
+    $(document).ready(function () {
+      $('.div-container .rgstr-btn button').click(function () {
+        $('.div-container .wrapper').addClass('move');
+        $('.body').css('background', '#35CD97');
+        $('.div-container .login-btn button').removeClass('active');
+        $(this).addClass('active');
 
-			});
-			$('.div-container .login-btn button').click(function(){
-				$('.div-container .wrapper').removeClass('move');
-				$('.body').css('background','#009E66');
-				$('.div-container .rgstr-btn button').removeClass('active');
-				$(this).addClass('active');
-			});
-		});
+      });
+      $('.div-container .login-btn button').click(function () {
+        $('.div-container .wrapper').removeClass('move');
+        $('.body').css('background', '#009E66');
+        $('.div-container .rgstr-btn button').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
   </script>
 </body>
 
