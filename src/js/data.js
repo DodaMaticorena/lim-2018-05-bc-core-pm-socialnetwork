@@ -42,6 +42,7 @@ window.createUser = (email, password, cb) => {
 			console.log('Ha habido un error')
 			console.log(error)
 			cb(error)
+
 		});
 }
 
@@ -104,10 +105,56 @@ window.likePost = (idPost, uid, likeBadge) => {
 		likeBadge.classList.remove("hidden");
 	});
 }
-window.showPost = (uid, cb) => {
 
-  firebase.database().ref('/posts/').once('value').then((value) => {
-    cb(value.val())
-  })
+window.sortPost = (posts) => {
+	let arrPost = [];
+	let keyPost = Object.keys(posts);
+	arrPost = Object.values(posts)
+	for(let i= 0;i<keyPost.length;i++){
+		arrPost[i].id=keyPost[i]
+	}
+	arraPost = arrPost.sort((a, b) => { return a.date - b.date })
 
+	return arraPost;
 }
+window.showPost = (cb) => {
+	firebase.database().ref('/posts/').once('value').then((value) => {
+		cb(sortPost(value.val()));
+	})
+}
+
+window.filterPost = (category,cb) => {
+	firebase.database().ref('/posts/').once('value').then((value) => {
+		const posts = value.val();
+
+		let arrPost = [];
+		let keyPost = Object.keys(posts);
+		arrPost = Object.values(posts)
+		arrPost = arrPost.map(el=>{ 
+			let i =0;
+			el.id = keyPost[i]
+			i ++;
+			return el;
+		  })
+		arraPost = arrPost.sort((a, b) => { return a.date - b.date });
+		arraPost = arrPost.filter(post =>{ 
+			return post.category === category;
+		})
+
+		cb(arraPost)
+	})
+}
+/*window.showPost = (cb) => {
+	//al leer sin usar once(), los datos se vuelven a cargar al detectar un cambio en firebase
+	var dataPost = firebase.database().ref('/posts/');
+	//limitToLast(10) muestra los 10 ultimos
+	dataPost.orderByChild('date').limitToLast(10).on('value', (snapshot) => {
+		cb(snapshot.val());
+	});
+
+	//al leer con once(), los datos se cargar solo una vez
+	/*firebase.database().ref('/posts/').once('value').then((value) => {
+	  cb(value.val());
+	})*/
+
+

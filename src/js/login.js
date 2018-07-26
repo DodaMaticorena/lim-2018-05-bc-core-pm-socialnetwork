@@ -37,7 +37,6 @@ buttonLogin.addEventListener('click', () => {
     }
   }
   logIn(email.value, password.value, callback);
-
 });
 
 let dataUser = {
@@ -84,40 +83,28 @@ buttonRegister.addEventListener('click', () => {
 		}	
 	}
 	createUser(emailRegister.value, passRegister.value, callback);
-
-
 });
 
 eventLogin.addEventListener('click', (event) => {
-  
   const callback = (error, result) => {
-
     if (!error) {
       dataUser.id = result.uid;
       dataUser.username = result.displayName;
       dataUser.email = result.email;
-
       location.href = 'home.html';
-
       registerUserProfile(dataUser);
-
     } else {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
       const credential = error.credential;
-
       alert(errorCode, errorMessage, email, credential);
     }
   }
-
   let provider = null;
-
   event.target.nodeName === 'BUTTON' && event.target.id === 'loginFacebook'
     ? provider = new firebase.auth.FacebookAuthProvider()
     : provider = new firebase.auth.GoogleAuthProvider()
-
   logInWithProvider(provider, callback);
-
 })
 
