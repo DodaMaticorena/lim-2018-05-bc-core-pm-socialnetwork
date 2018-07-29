@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #35CD97">
+  <nav class="navbar fixed-top navbar-expand-md navbar-light" style="background-color: #35CD97">
     <span class="logo-home"><i class="fas fa-paw"></i></span><a class="navbar-brand" href="#">SoyTuPata</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -30,19 +30,6 @@
           <a class="nav-link" href="#">Mi Perfil</a>
         </li>
         <li class="nav-item">
-          <a id="toAddPost" class="nav-link" href="#">Crear Post</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Categorías</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="#">Salud</a>
-            <a class="dropdown-item" href="#">Alimentación</a>
-            <a class="dropdown-item" href="#">Mascotas Perdidas</a>
-            <a class="dropdown-item" href="#">Entretenimiento</a>
-          </div>
-        </li>
-        <li class="nav-item">
           <a id="logOut" class="nav-link" href="#">Salir</a>
         </li>
       </ul>
@@ -56,42 +43,82 @@
       </div>
     </div>
   </nav>
-
-    <div class="mainCotainer">
-      <div id="showPost" class="col-xl-5 col-lg-5 col-md-5 col-sm-5 "></div>
-      <div id="dataPost" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 panel-login">
-        <div class="options">
-          <p class="font-weight-bold col-sm-2">Categoría</p>
-          <select id="optCategory" class="custom-select col-sm-4">
-            <option value="salud">Salud</option>
-            <option value="alimentacion">Alimentación</option>
-          </select>
-
-
-          <p class="font-weight-bold col-sm-2">Estado</p>
-          <select id="optState" class="custom-select col-sm-4">
-            <option value="publico">Público</option>
-            <option value="privado">Privado</option>
-          </select>
+  <div class="container container-new-post">
+    <div class="row justify-content-center div-center">
+      <div class="col-md-3 col-sm-4">
+        <div class="lateral-menu">
+          <h5 class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Categorías</h5>
+          <button class="btn btn-success d-block d-sm-block d-md-none d-lg-none d-xl-none" id="show-categories">Categorías</button>
+          <ul id="buttons-category" class="list-group">
+            <li class="list-group-item"><a href="#" id="category-salud">Salud</a></li>
+            <li class="list-group-item"><a href="#" id="category-alimentacion">Alimentación</a></li>
+            <li class="list-group-item"><a href="#" id="category-adopcion">Adopción</a></li>
+            <li class="list-group-item"><a href="#" id="category-mascotas-perdidas">Mascotas Perdidas</a></li>
+            <li class="list-group-item"><a href="#" id="category-sos">SOS</a></li>
+            <li class="list-group-item"><a href="#" id="category-entretenimiento">Entretenimiento</a></li>
+          </ul>
         </div>
-        <br>
-        <p class="font-weight-bold">Título</p>
-        <input type="text" id="inputTitle" class="form-control" placeholder="Ingrese el encabezado">
-        <div>
-          <div id="contentImagen"></div>
-          <!--button id="btnImagen">Subir imagen</button-->
-        </div>
-        <br>
-        <p class="font-weight-bold">Contenido</p>
-        <textarea id="inputContent" class="form-control" aria-label="With textarea" placeholder="Ingrese el contenido" rows="5"></textarea>
-
-        <br>
-        <button id="addPost" class="btn btn-primary">Publicar</button>
-        <button id="editPost" class="btn btn-primary">Actualizar</button>
       </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div id="dataPost" class="col-sm-12 div-form">
+            <div class="post form-add-post">
+              <a href="#" id="close-create" class="close hidden"><i class="fas fa-window-close"></i></a>
+              <input type="text" id="inputTitle" class="form-control" placeholder="¿Que tema quieres compartir?">
+              
+              <div id="hidden-form" class="hidden">
+                <div>
+                  <div id="contentImagen"></div>
+                  <!--button id="btnImagen">Subir imagen</button-->
+                </div>
+                <br>
+                <textarea id="inputContent" class="form-control" aria-label="With textarea" placeholder="Ingrese el contenido" rows="5"></textarea>
+                <br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-3 col-form-label font-weight-bold">Categoría</label>
+                      <div class="col-sm-9">
+                        <select id="optCategory" class="custom-select form-control">
+                          <option value="Salud">Salud</option>
+                          <option value="Alimentación">Alimentación</option>
+                          <option value="Adopción">Adopción</option>
+                          <option value="Mascotas perdidas">Mascotas perdidas</option>
+                          <option value="Entretenimiento">Entretenimiento</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label font-weight-bold">Estado</label>
+                        <div class="col-sm-9">
+                          <select id="optState" class="custom-select form-control">
+                            <option value="publico">Público</option>
+                            <option value="privado">Privado</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <button id="addPost" class="btn btn-primary">Publicar</button>
+                <button id="editPost" class="btn btn-primary">Actualizar</button>
+              </div>
+
+              
+            </div>
+          </div>
+          <div id="showPost" class="col-sm-12 reverse">
+          </div>
+        </div>
+      </div>
+      
+      
     </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>

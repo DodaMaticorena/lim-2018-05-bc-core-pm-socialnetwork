@@ -1,5 +1,6 @@
 body {
 	height: 100%;
+	background-color: #F6F6F6;
 }
 
 .hidden {
@@ -10,6 +11,10 @@ body {
   background-color: #fff;
 	padding: 10px 20px;
 	margin-top: 30px;
+}
+
+.social-name {
+	font-family: 'Chela One', cursive; 
 }
 
 .logo {
@@ -148,7 +153,6 @@ body {
 	border-color: #B03E20;
 }
 
-.text-center,
 .navbar-brand {
     font-family: 'Chela One', cursive;
     color: #333333;
@@ -163,14 +167,18 @@ body {
 	justify-content: space-around;
 	
 }
-.mainCotainer{
+.mainContainer{
 	display: flex;
 	justify-content: center;
 }
+
+.container-new-post {
+	margin-top: 70px;
+}
 #showPost{
-	display: flex;
+	/*display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: center;*/
 	
 }
 @media (max-width: 540px) {
@@ -287,11 +295,44 @@ outline: none;
 	border-color: #009E66;
 }
 /* Estilos de los post*/
+.div-form {
+	margin-top: 30px;
+}
+
+.div-form .btn {
+	width: 100%;
+	border-radius: 0;
+}
+
+.div-options-posts {
+	/*margin-top: 60px;*/
+}
+
+
+
+.reverse {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: #F6F6F6;
+}
+
+.form-add-post {
+	padding: 20px;
+	position: relative;
+}
+.form-add-post .close {
+	position: absolute;
+	top: -3px;
+	right: -1px;
+	font-size: 30px;
+}
+
 .post {
 	background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
 	border-radius: .25rem;
 	position: relative;
+	background-color: #FFF;
 }
 
 .post .date, .post .category {
@@ -302,7 +343,40 @@ outline: none;
 	margin-left: 10px;
 }
 
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+	box-shadow: inset 0 0 0 50px #fff
+}
+/*---------------------------------------menu lateral-------------------------------------------*/
+.div-center {
+	position: relative;
+}
+.lateral-menu {
+	position: fixed;
+	width: 14%;
+	color: #009E66;
+}
+
+.list-group-item:hover {
+	background-color: #35CD97;
+}
+
+.list-group-item:hover > a {
+	color: #fff;
+}
+
+@media (max-width: 540px) {
+	
+}
+
 @media (max-width: 767px){
+	.lateral-menu {
+		left: 0;
+		width: 300px;
+		z-index: 999;
+	}
+	.div-form {
+    margin-top: 45px;
+	}
 	.div-container .button{
 		background: #b5b5b5;
 		border-radius: 0;
@@ -354,6 +428,5 @@ outline: none;
 	}
 }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
-	box-shadow: inset 0 0 0 50px #fff
-}
+
+

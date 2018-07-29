@@ -74,23 +74,50 @@ El público objetivo se estableció utilizando las entrevistas y las encuestas, 
 
 #### Proceso de diseño
 
-El diseño del Log in se pensó como una idea de dinamismo y energía o viveza.
+El diseño del Log in se pensó como una idea de dinamismo, es por eso que implementamos el desliz que se ve al querer registrarse o ingresar.
 
-Los colores que usamos son el verde y el blanco, colores orgánicos, que denotan salud y bienestar. Proporciona una sensación de tranquilidad y seguridad. 
+Los colores que usamos son el verde y el blanco, colores orgánicos, que denotan salud y bienestar. Proporciona una sensación de tranquilidad y seguridad.
+
+Para la página de la red social en sí, decidimos usar el color verde más claro y el blanco, para darle una vista minimalista y sobria.
+
+#### Benchmark
+
+Para obtener ideas de cómo diseñar la red social hicimos benchmarking de algunas páginas. Buscamos en [Adopta Pet](https://www.adoptapet.com/), [Doggy Bnb](http://doggybnb.com/), [Catster](https://www.catster.com/), 
+[Dogster](https://www.dogster.com/), [FacePets](http://www.facepets.es/), las cuales son dedicadas a mascotas. Y también revisamos Facebook y Google+. 
+
+Lo principal red social a la que acudimos es a Facebook, ya que es una de las más usadas y podíamos obtener buenas ideas de ahí.
+
+La mayoría de páginas de mascotas que encontramos son de blogs o adopción u otros temas. FacePets sí es una red social de mascotas, pero no guiada a la salud de ellas. Entonces, como pudimos ver, no hay muchas aplicaciones del tema.
+
+La sección de inicio, donde se observan las publicaciones de los usuarios, así como la sección de nueva publicación, fueron ideadas tomando en cuenta el benckmark hecho en Facebook.  
 
 
 ## Sketch
 
 El sketch del Log in fue ideado al investigar y hacer benchmarking de redes sociales y otras páginas. 
 
+Este es el Log in en modo desktop:
+
 ![Sin titulo](/img/sketch-1-social-network.JPG)
 ![Sin titulo](/img/sketch-2-social-network.JPG)
 
-El sketch de la página de inicio se dio con la idea general de redes sociales.
+- El sketch de la página de inicio se dio con la idea general de redes sociales.
+
+Para desktop, el primer sketch fue como lo muestra la imagen:
 
 ![Sin titulo](/img/sketch-home-desktop.jpeg)
+
+
+Para móvil, el primer sketch de la página de incio fue de la siguiente manera:
+
 ![Sin titulo](/img/sketch-home-movil.jpeg)
-![Sin titulo](/img/sketch-home-movil2.jpeg)
+
+
+En el camino, con el testing de usuarios y el feedback en general, realizamos los siguientes cambios:
+
+![Sin titulo](/img/sketch-home-movil2.jpg)
+![Sin titulo](/img/sketch-home-movil3.jpg)
+![Sin titulo](/img/sketch-home-movil4.jpg)
 
 
 ## Prototipo de Alta Fidelidad
@@ -104,12 +131,24 @@ Usamos Figma para realizar el diseño de la idea que teníamos para la red socia
 
 ## Maquetación 
 
-Para construir el Log in utilizamos Frameworks con los colores acordados. En este caso se puede entrar o registrarse con el correo del usuario o con su Facebook.
+Para construir el Log in utilizamos Bootstrap con los colores acordados. En este caso se puede ingresar con el correo electrónico del usuario, habiéndose registrado previamente, también con su Facebook o con Gmail. 
 
-El Log in se inspiró al hacer la investigación y el benchmarking. 
+El Log in se inspiró al hacer la investigación y el benchmarking.  
 
 **_Maquetación del Home_**
 
-La maquetación de la página principal se hizo utilizando Bootstrap. Resultó ser un reto que aún estamos atravesando pero que ha resultado bastante enriquecedor para el aprendizaje de nuevas herramientas digitales.
+La maquetación de la página principal se hizo utilizando Bootstrap con CSS. Resultó ser un reto que ha resultado bastante enriquecedor para el aprendizaje de nuevas herramientas digitales.
 
-La idea de la Red Social se dio de cierta forma y en el camino fue cambiando un poco.
+Utilizamos un _navbar_ para la barra principal, donde podemos encontrar las principales funciones de la página. Y en el container usamos diversos _div_ para maquetar usando Bootstrap. Tenemos una opción de categorías, en las que podemos filtrar las publicaciones del usuario.
+
+La idea de la red social se dio de una forma y en el camino fue cambiando un poco después de hacer testings y pedir feedback. 
+
+## Firebase
+
+Para registrar a los usuarios usamos Firebase para obtener la base de datos y autenticación. 
+
+Con la documentación que se encuentra en la misma página web, hemos podido implementar Firebase en nuestro código.
+
+## Test
+
+Realizar los tests ha sido bastante complicado debido al uso de Firebase. Aún estamos tratando de realizar los test. Intentamos con el Firebase Mock para evitar usar el mismo Firebase, pero todavía no funciona el testing. 

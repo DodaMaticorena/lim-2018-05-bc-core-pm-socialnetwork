@@ -1,20 +1,19 @@
 global.window = global;
 global.assert = require('chai').assert;
-global.firebase = require('firebase');
-const firebaseMock = require('firebase-mock');
-global.mocksdk = firebaseMock.MockFirebaseSdk();
 
-firebaseMock.override();
+//global.firebase = require('firebase');
 
-let config = {
-    apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
-    authDomain: "pet-health-social-network.firebaseapp.com",
-    databaseURL: "https://pet-health-social-network.firebaseio.com",
-    projectId: "pet-health-social-network",
-    storageBucket: "pet-health-social-network.appspot.com",
-    messagingSenderId: "838633128523"
-};
-global.firebase.initializeApp(config);
+const firebasemock = require('firebase-mock');
+const mockauth = new firebasemock.MockFirebase();
+const mockdatabase = new firebasemock.MockFirebase();
+mockdatabase.autoFlush();
+mockauth.autoFlush();
+
+global.firebase = firebasemock.MockFirebaseSdk(
+  path => (path ? mockdatabase.child(path) : mockdatabase),
+  () => mockauth
+);
+
+const modelTest = require('./data.spec');
 
 require('../src/js/data');
-require('./data.spec.js');
