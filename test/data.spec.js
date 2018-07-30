@@ -1,68 +1,46 @@
-mocksdk.initializeApp();
-describe('createUser', () => {
-  it('debería ser funcion', () => {
-    assert.isFunction(createUser);
-  });
-  it('Deberia crear un usuario con password 12345678', () => {
-    createUser('usuario1@gmail.com', '1');
-    // mocksdk.auth().flush();
-    mocksdk.auth().getUserByEmail('usuario1@gmail.com').then(function(user) {
-      console.log(user);
-      assert.equal(user, 'ben was created');
+//module.exports = () => {
+  describe('La lista, me debería permitir agregar tareas', () => {
+    let postData = {
+      title: 'Titulo de prueba'
+    };
+
+    it('Debería agregar una tarea', (done) => {
+      editPost('LHgicvU_FDayzfKl7LJ', postData)
+        .then(() => getPostList())
+        .then((postList) => {
+          const data = Object.entries(postList.val()).find(post => post[1].title === 'Titulo de prueba');
+          assert.exists(data[1]); // verifica que exista algo en particular
+          assert.equal(data[1].title, 'Titulo de prueba');
+          done();
+        })
+        .catch((error) => {
+          done(error);
+        });
     });
   });
-  /* it('no permite password cortos', () => {
-    createUser('usuario2', '1234')
+
+  /* describe('La lista, me debería permitir colocarle un progreso a una tarea', () => {
+    it('Debería permitirle colocarle progreso a una tarea', (done) => { // parametros de la función
+      taskProgress('Comprar pan', 'se ha comprado').then(
+        (task) => {
+          assert.exists(task);
+          assert.equal(task.title, 'Comprar pan');
+          assert.equal(task.state, 'se ha comprado');
+          done();
+        },
+      ).catch(
+        (error) => {
+          done(error);
+        },
+      );
+    });
+  });
+
+  describe('La lista, me debería permitir editar una tarea', () => {
+
+  });
+
+  describe('La lista, me debería permitir borrar una tarea', () => {
+
   }); */
-
-})
-
-/* describe('data', () => {
-   let config = {
-    apiKey: "AIzaSyCrbUbq0oD49Yzk_eryDiJoseqOC6vUIcg",
-    authDomain: "pet-health-social-network.mocksdkapp.com",
-    databaseURL: "https://pet-health-social-network.mocksdkio.com",
-    projectId: "pet-health-social-network",
-    storageBucket: "pet-health-social-network.appspot.com",
-    messagingSenderId: "838633128523"
-  };
-  mocksdk.initializeApp(config);
-
-  
-  xit('debería exponer función registerUserProfile en objeto global', () => {
-    assert.isFunction(registerUserProfile);
-  });
-
-  xit('debería exponer función createPost en objeto global', () => {
-    assert.isFunction(createPost);
-  });
-
-  xit('debería exponer función editPost en objeto global', () => {
-    assert.isFunction(editPost);
-  });
-
-  xit('debería exponer función deletePost en objeto global', () => {
-    assert.isFunction(deletePost);
-  });
-
-  describe('registerUserProfile(dataUser)', () => {
-    let dataUser = {
-      id: null,
-      username: '',
-      email: '',
-      picture: ''
-    }
-
-    //const registerUserProfile = require('../src/js/data'); //jest import
-
-    xit('debería retornar un objeto', () => {
-      const functionEvalue = registerUserProfile(dataUser);
-      assert.equal(typeof functionEvalue, 'object');  
-      const alertTest = setTimeout(function(){ alert("Hello"); }, 3000);
-      clearTimeout(alertTest);
-    });
-
-  }); 
-
-});
- */
+//};

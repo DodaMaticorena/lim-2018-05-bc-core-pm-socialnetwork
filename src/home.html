@@ -12,22 +12,25 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light" style="background-color: #35CD97">
-    <span class="logo-home"><i class="fas fa-paw"></i></span><a class="navbar-brand" href="#">SoyTuPata</a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
+  <nav class="navbar fixed-top navbar-expand-md navbar-light">
+    <span class="logo-home">
+      <i class="fas fa-paw"></i>
+    </span>
+    <a class="navbar-brand" href="#">SoyTuPata</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse" id="navbarsExample04" style>
+    <div class="navbar-collapse collapse" id="navbar-menu">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio
+          <a class="nav-link" href="home.html">Inicio
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mi Perfil</a>
+          <a id='my-posts' class="nav-link" href="#">Mi Perfil</a>
         </li>
         <li class="nav-item">
           <a id="logOut" class="nav-link" href="#">Salir</a>
@@ -35,86 +38,122 @@
       </ul>
       <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar">
+          <input type="text" id="input-element" class="form-control" placeholder="Buscar">
           <span class="input-group-btn">
-            <button class="btn btn-light" type="button"><img src="img/search.png" alt="" class="search-img"></button>
+            <button class="btn btn-light" id="search-button" type="button">
+              <img src="img/search.png" alt="" class="search-img">
+            </button>
+            <button class="btn btn-light" id="search-button-post" type="button">
+              <img src="img/search.png" alt="" class="search-img">
+            </button>
           </span>
         </div>
       </div>
     </div>
+    </div>
   </nav>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xl-8 col-lg-9 col-md-11 col-sm-12 div-options-posts">
+  <div class="container container-new-post">
+    <div class="row justify-content-center div-center">
+
+      <div class="col-md-7" id="container-to-post">
         <div class="row">
-          <div class="col-sm-6">
-            <a id="toAddPost" class="btn btn-primary" href="#">Crear Post</a>
-          </div>
-          <div class="col-sm-6 text-right">
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Categorías
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" id="buttons-category">
-                  <button class="category dropdown-item" type="button" id="category-salud">Salud</button>
-                  <button class="category dropdown-item" type="button" id="category-alimentacion">Alimentación</button>
-                  <button class="category dropdown-item" type="button" id="category-adopcion">Adopción</button>
-                  <button class="category dropdown-item" type="button" id="category-mascotas-perdidas">Mascotas Perdidas</button>
-                  <button class="category dropdown-item" type="button" id="category-entretenimiento">Entretenimiento</button>
+          <div id="dataPost" class="col-sm-12 div-form">
+            <div class="post form-add-post">
+              <a href="#" id="close-create" class="close hidden">
+                <i class="fas fa-window-close"></i>
+              </a>
+              <input type="text" id="inputTitle" class="form-control" placeholder="¿Qué  tema quieres compartir?">
+
+              <div id="hidden-form" class="hidden">
+                <div>
+                  <div id="contentImagen"></div>
+                  <!--button id="btnImagen">Subir imagen</button-->
                 </div>
-              </div>
-          </div>
-        </div>
-          
-      </div>
-      <div id="dataPost" class="col-xl-8 col-lg-9 col-md-11 col-sm-12 div-form">
-        <div class="post form-add-post">
-          <a href="#" id="close-create" class="close"><i class="fas fa-window-close"></i></a>
-          <h5 class="text-center">Nueva publicación</h5>
-          <label class="font-weight-bold">Tema</label>
-          <input type="text" id="inputTitle" class="form-control" placeholder="Ingrese el encabezado">
-          <div>
-            <div id="contentImagen"></div>
-            <!--button id="btnImagen">Subir imagen</button-->
-          </div>
-          <br>
-          <p class="font-weight-bold">Contenido</p>
-          <textarea id="inputContent" class="form-control" aria-label="With textarea" placeholder="Ingrese el contenido" rows="5"></textarea>
-          <br>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label font-weight-bold">Categoría</label>
-                <div class="col-sm-9">
-                  <select id="optCategory" class="custom-select form-control">
-                    <option value="Salud">Salud</option>
-                    <option value="Alimentación">Alimentación</option>
-                    <option value="Adopción">Adopción</option>
-                    <option value="Mascotas perdidas">Mascotas perdidas</option>
-                    <option value="Entretenimiento">Entretenimiento</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label font-weight-bold">Estado</label>
-                  <div class="col-sm-9">
-                    <select id="optState" class="custom-select form-control">
-                      <option value="publico">Público</option>
-                      <option value="privado">Privado</option>
-                    </select>
+                <br>
+                <textarea id="inputContent" class="form-control" aria-label="With textarea" placeholder="Ingresa el contenido" rows="5"></textarea>
+                <br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="opt-category" class="col-sm-3 col-form-label font-weight-bold">Categoría</label>
+                      <div class="col-sm-9">
+                        <select id="opt-category" class="custom-select form-control">
+                          <option value="Salud">Salud</option>
+                          <option value="Alimentación">Alimentación</option>
+                          <option value="Adopción">Adopción</option>
+                          <option value="Mascotas pérdidas">Mascotas pérdidas</option>
+                          <option value="SOS">SOS</option>
+                          <option value="Entretenimiento">Entretenimiento</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="optState" class="col-sm-3 col-form-label font-weight-bold">Estado</label>
+                      <div class="col-sm-9">
+                        <select id="optState" class="custom-select form-control">
+                          <option value="publico">Público</option>
+                          <option value="privado">Privado</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <button id="addPost" class="btn btn-success btn-form-color">Publicar</button>
+                <button id="editPost" class="btn btn-success btn-form-color">Actualizar</button>
               </div>
+            </div>
           </div>
-          <button id="addPost" class="btn btn-primary">Publicar</button>
-          <button id="editPost" class="btn btn-primary">Actualizar</button>
+          <div id="showPost" class="col-sm-12 reverse">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div id="showPost" class="col-xl-8 col-lg-9 col-md-11 col-sm-12 reverse">
+      <div class="col-md-3 col-sm-6">
+        <div class="lateral-menu">
+          <h5 class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Categorías</h5>
+          <button class="btn btn-success d-block d-sm-block d-md-none d-lg-none d-xl-none float-right" id="show-categories">Categorías</button>
+          <ul id="buttons-category" class="list-group custom-list">
+            <li class="category-salud list-group-item" value="Salud">
+              <a href="#">Salud</a>
+            </li>
+            <li class="category-alimentacion list-group-item" value="Alimentación">
+              <a href="#">Alimentación</a>
+            </li>
+            <li class="category-adopcion list-group-item" value="Adopción">
+              <a href="#">Adopción</a>
+            </li>
+            <li class="category-mascotas-perdidas list-group-item" value="Mascotas pérdidas">
+              <a href="#">Mascotas pérdidas</a>
+            </li>
+            <li class="category-sos list-group-item" value="SOS">
+              <a href="#">SOS</a>
+            </li>
+            <li class="category-entretenimiento list-group-item" value="Entretenimiento">
+              <a href="#">Entretenimiento</a>
+            </li>
+          </ul>
+          <!-- <ul id="buttons-category-post" class="list-group custom-list">
+            <li class="category-salud list-group-item" value="Salud">
+              <a href="#">Salud</a>
+            </li>
+            <li class="category-alimentacion list-group-item" value="Alimentación">
+              <a href="#">Alimentación</a>
+            </li>
+            <li class="category-adopcion list-group-item" value="Adopción">
+              <a href="#">Adopción</a>
+            </li>
+            <li class="category-mascotas-perdidas list-group-item" value="Mascotas pérdidas">
+              <a href="#">Mascotas pérdidas</a>
+            </li>
+            <li class="category-sos list-group-item" value="SOS">
+              <a href="#">SOS</a>
+            </li>
+            <li class="category-entretenimiento list-group-item" value="Entretenimiento">
+              <a href="#">Entretenimiento</a>
+            </li>
+          </ul> -->
+        </div>
       </div>
     </div>
   </div>

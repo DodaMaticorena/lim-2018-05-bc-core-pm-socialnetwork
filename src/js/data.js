@@ -67,6 +67,7 @@ window.createPost = (postData) => {
 	const newPostKey = firebase.database().ref().child('posts').push().key;
 	// Registrar en el objeto posts y user-post la nueva publicación
 	const updates = {};
+	postData.id = newPostKey;
 	updates['/posts/' + newPostKey] = postData;
 	updates['/user-posts/' + postData.uid + '/' + newPostKey] = postData;
 	firebase.database().ref().update(updates);
@@ -77,9 +78,12 @@ window.createPost = (postData) => {
 window.editPost = (postId, postData) => {
 	const updates = {};
 	updates['/posts/' + postId] = postData;
-	//updates['/user-posts/' + postData.uid + '/' + postId] = postData;
+	//firebase.database().ref('/posts/' + postId).update(postData);
 	return firebase.database().ref().update(updates);
 }
+
+//Lee los post para usarlos en el test
+window.getPostList = () => firebase.database().ref('posts').once('value');
 
 //Esta funcion permite eliminar posts
 window.deletePost = (postId, uid) => {
@@ -106,44 +110,56 @@ window.likePost = (idPost, uid, likeBadge) => {
 	});
 }
 
-window.sortPost = (posts) => {
-	let arrPost = [];
-	let keyPost = Object.keys(posts);
-	arrPost = Object.values(posts)
-	for(let i= 0;i<keyPost.length;i++){
-		arrPost[i].id=keyPost[i]
-	}
-	arraPost = arrPost.sort((a, b) => { return a.date - b.date })
-
-	return arraPost;
-}
-window.showPost = (cb) => {
-	firebase.database().ref('/posts/').once('value').then((value) => {
-		cb(sortPost(value.val()));
-	})
+window.sortPosts = (posts) => {
+	return posts.sort((a, b) => { return b.date < a.date });
 }
 
-window.filterPost = (category,cb) => {
-	firebase.database().ref('/posts/').once('value').then((value) => {
-		const posts = value.val();
-
-		let arrPost = [];
-		let keyPost = Object.keys(posts);
-		arrPost = Object.values(posts)
-		arrPost = arrPost.map(el=>{ 
-			let i =0;
-			el.id = keyPost[i]
-			i ++;
-			return el;
-		  })
-		arraPost = arrPost.sort((a, b) => { return a.date - b.date });
-		arraPost = arrPost.filter(post =>{ 
-			return post.category === category;
-		})
-
-		cb(arraPost)
-	})
+window.filterPosts = (postSorted, filterBy, valueFilter) => {
+	let postFiltered = null;
+	filterBy !== null && valueFilter !== null
+		? postFiltered = postSorted.filter(post => post[filterBy].toUpperCase().indexOf(valueFilter.toUpperCase()) !== -1)
+			// === valueFilter)
+		: postFiltered = postSorted;
+	return postFiltered;
 }
+/*
+window.filterUsers = (users, search) => {
+    if (search !== '') {
+
+        const filterUsersArray = users.filter(user => {
+
+            return user.name.toUpperCase().indexOf(search.toUpperCase()) !== -1;//Filtrar (case insensitive)
+        })
+        return filterUsersArray;
+
+    } else {
+        return users;
+    }
+};
+*/
+
+window.showMyPosts = (dataUser, filterBy, valueFilter, cb) => {
+	return getPostList()
+		.then(post => {
+			const posts = Object.values(post.val());
+			const postSorted = sortPosts(posts);
+			const myPosts = filterPosts(postSorted, 'uid', dataUser.uid);
+			const postsFiltered = filterPosts(myPosts, filterBy, valueFilter);
+			cb(postsFiltered);
+		});
+}
+window.showPosts = (filterBy, valueFilter, cb) => {
+	return getPostList()
+		.then(post => {
+			const posts = Object.values(post.val());
+			const postSorted = sortPosts(posts);
+			const postPublic = filterPosts(postSorted, 'state', 'publico');
+			const postsFiltered = filterPosts(postPublic, filterBy, valueFilter);
+			cb(postsFiltered);
+		});
+}
+
+
 /*window.showPost = (cb) => {
 	//al leer sin usar once(), los datos se vuelven a cargar al detectar un cambio en firebase
 	var dataPost = firebase.database().ref('/posts/');

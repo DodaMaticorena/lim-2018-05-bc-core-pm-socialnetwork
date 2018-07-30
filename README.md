@@ -10,9 +10,47 @@ En esta oportunidad, hemos decidido crear una red social enfocada en la salud de
 
 ## Definición del producto
 
-Los principales usuarios del producto son los llamados _pet lovers_, dueños de mascotas que buscan un lugar en el que puedan obtener información general sobre salud y bienestar de sus mascotas. Asimismo, los veterinarios son usuarios de la red social, ya que son los que mayormente proveen el conocimiento científico sobre el tema. Esta red social será usada como un intercambio de información y ayuda general.
+#### Elementos básicos de una red social
 
-#### Entrevista
+Una red social permite la conexión entre personas, formar algún tipo de relación entre ellas. En el caso de una red social en internet, se caracteriza por permitir compartir información en esa plataforma, es decir, generar contenido que otras personas puedan ver en un dispositivo a través de la web. Además, hay comunicación recíproca, el receptor puede expresar lo que piensa del mensaje que el emisor ha dado, muchas veces con un "Me gusta" o un comentario. 
+
+#### Definición del usuario de SoyTuPata
+
+Los principales usuarios del producto son los llamados _pet lovers_, amantes de mascotas, entre 23 y 34 años, que buscan una plataforma en la que puedan obtener información general sobre la salud y bienestar de sus mascotas. Asimismo, los veterinarios son usuarios de la red social, ya que son los que mayormente proveen el conocimiento científico sobre el tema. Esta red social será usada como un intercambio de información y ayuda general.
+
+
+#### Usuarios (detalles)
+
+Descubrimos las necesidades de los usuarios mediante las preguntas que les hicimos. La entrevista es muy importante ya que permite observar y escuchar las preocupaciones y opiniones que tienen ellos. 
+
+Esta red social resuelve el problema de escasez de comunicación que hay entre personas amantes de mascotas. En internet puede haber mucha información sobre animales, pero una red social se enfoca en la información que requieren exactamente y obtienen respuestas de otras personas a tiempo real o en poco tiempo.
+
+El objetivo principal de los usuarios es tener una red social donde puedan preguntar sobre salud y bienestar para sus mascotas y puedan encontrar respuestas de profesionales. Poder encontrar una red en la que obtengan apoyo y sepan adónde acudir ante una inquietud, que no sea una emergencia.
+
+Sus mascotas son parte de la familia, entonces también es importante poder encontrar consejos e información sobre productos que pueden adquirir para sus mascotas. Asimismo, poder compartir momentos mediante fotos y videos.
+
+El público objetivo se estableció utilizando las entrevistas y las encuestas, las que arrojaron que el target eran las personas de 23 a 34 años de edad.
+
+#### Producto (detalles)
+
+Esta red social tiene como prioridad facilitar la comunicación de los usuarios para que puedan encontrar la información y el apoyo que necesitan.
+
+En esta aplicación se puede hacer publicaciones en el muro, editarlas o eliminarlas, especificar la categoría a la que pertenecen y poner “Me gusta” a una publicación.
+
+Para verificar que el producto está resolviendo los problemas del usuario hicimos un testing del prototipo con algunos de estos usuarios, incluyendo un veterinario. 
+
+Para asegurar que la red social sea usada se hizo una investigación previa, con entrevistas a usuarios para saber que esta sea lo que ellos requieren. Pero además de este research, debe haber una etapa de crecimiento que permitirá asegurar que la red social siga siendo utilizada. Esta etapa de crecimiento es un trabajo en equipo que también exige del continuo contacto con el usuario para saber sus necesidades.
+
+#### Proceso de diseño
+
+El diseño del Log in se pensó como una idea de dinamismo, es por eso que implementamos la animación que permite deslizar la caja al querer registrarse o ingresar.
+
+Los colores que usamos son el verde y el blanco, colores orgánicos, que denotan salud y bienestar. Proporciona una sensación de tranquilidad y seguridad.
+
+Para la página de la red social en sí, decidimos usar el color verde más claro que se puede observar en el log in y el blanco, para darle una vista minimalista y sobria.
+
+
+## Entrevista
 
 Después de un proceso de investigación y elaboración de preguntas, estas son las que se utilizaron para las entrevistas:
 
@@ -48,7 +86,7 @@ _Preguntas adicionales para Veterinarios:_
 
 **_Conclusiones_**
 
-La mayoría de los entrevistados tienen un perro; y en segundo lugar, tienen un gato. Además, los animales que han tenido en el pasado mayormente han sido loros, conejos y hamsters. Todos consideran a su mascota como parte de la familia. Piensan que los perros son buena compañía, los gatos son independientes y fáciles de cuidar.
+La mayoría de los entrevistados tienen un perro; y en segundo lugar, tienen un gato. Además, los animales que han tenido en el pasado mayormente han sido loros, conejos y hamsters. Todos consideran a su mascota como parte de la familia. Piensan que los perros son buena compañía, y los gatos son independientes y fáciles de cuidar.
 
 Lo que más les preocupa de sus mascotas es que coman saludable, que no se sientan solos y que estén bien de salud. Cuando han tenido alguna dificultad con sus mascotas, especialmente de salud, han acudido al internet para buscar ayuda y soluciones. También han acudido a un veterinario cuando el problema era más grave.
 
@@ -62,25 +100,7 @@ Los dispositivos que usan en primer lugar son los celulares, y en segundo lugar 
 
 Todos estaban interesados en una red social que se enfoque en la salud de mascotas.
 
-
-#### Usuarios
-
-El objetivo principal de los usuarios es tener una red social donde puedan preguntar sobre salud y bienestar para sus mascotas y puedan encontrar respuestas de profesionales. Poder encontrar una red en la que obtengan apoyo y sepan adónde acudir ante una dificultad.
-
-Sus mascotas son parte de la familia, entonces también es importante poder encontrar consejos e información sobre productos que pueden adquirir para sus mascotas. Asimismo, poder compartir momentos mediante fotos y videos.
-
-El público objetivo se estableció utilizando las entrevistas y las encuestas, las que arrojaron que el target eran las personas de 21 a 35 años de edad.
-
-
-#### Proceso de diseño
-
-El diseño del Log in se pensó como una idea de dinamismo, es por eso que implementamos el desliz que se ve al querer registrarse o ingresar.
-
-Los colores que usamos son el verde y el blanco, colores orgánicos, que denotan salud y bienestar. Proporciona una sensación de tranquilidad y seguridad.
-
-Para la página de la red social en sí, decidimos usar el color verde más claro y el blanco, para darle una vista minimalista y sobria.
-
-#### Benchmark
+## Benchmark
 
 Para obtener ideas de cómo diseñar la red social hicimos benchmarking de algunas páginas. Buscamos en [Adopta Pet](https://www.adoptapet.com/), [Doggy Bnb](http://doggybnb.com/), [Catster](https://www.catster.com/), 
 [Dogster](https://www.dogster.com/), [FacePets](http://www.facepets.es/), las cuales son dedicadas a mascotas. Y también revisamos Facebook y Google+. 
@@ -110,14 +130,14 @@ Para desktop, el primer sketch fue como lo muestra la imagen:
 
 Para móvil, el primer sketch de la página de incio fue de la siguiente manera:
 
-![Sin titulo](/img/sketch-home-movil.jpeg)
+![Sin titulo](/img/sketch-home-mobile.jpeg)
 
 
 En el camino, con el testing de usuarios y el feedback en general, realizamos los siguientes cambios:
 
-![Sin titulo](/img/sketch-home-movil2.jpg)
-![Sin titulo](/img/sketch-home-movil3.jpg)
-![Sin titulo](/img/sketch-home-movil4.jpg)
+![Sin titulo](/img/sketch-home-mobile2.jpg)
+![Sin titulo](/img/sketch-home-mobile3.jpg)
+![Sin titulo](/img/sketch-home-mobile4.jpg)
 
 
 ## Prototipo de Alta Fidelidad
@@ -127,6 +147,25 @@ Usamos Figma para realizar el diseño de la idea que teníamos para la red socia
 [Link del Prototipo Desktop](https://www.figma.com/proto/GlXkQ89W0gJkBgm7usXQ8fiP/Pr-Red-Social-Desktop?scaling=min-zoom&node-id=1%3A2)
 
 [Link del Prototipo Móvil](https://www.figma.com/proto/F0WdstzVNrQ8AAp45HvU6rSg/Pr-Red-Social-Movil?scaling=min-zoom&node-id=2%3A6)
+
+![Sin titulo](/img/prototype-mobile.jpg)
+![Sin titulo](/img/prototype-desktop.jpg)
+
+## Testing con usuarios
+
+#### Conclusiones del testing de Prototipo
+
+Los usuarios reaccionaron positivamente ante el testing final con el prototipo. Les pareció un flujo comprensible, con sentido. A la mayoría les gustó el color y la simpleza de la aplicación. 
+
+Los primeros testings arrojaron varias opiniones que conluyeron en algunos cambios del diseño. Por ejemplo, algunos veían la página como algo más parecido a un blog, no entendían el parecido con una red social, así que cambiamos eso. Asimismo, el menú general de la página contenía la sección de categorías dentro, pero con el testing comprobamos que el usuario no encontraba bien esa sección, por lo que tuvimos que hacerlo más visible.
+
+#### Conclusiones del testing con el producto HTML
+
+A los usuarios en general les gustó la red social, les pareció bastante intuitiva. 
+
+Solo uno dio un comentario sobre qué pasaba si olvidaba su contraseña, veía necesario poner esa funcionalidad. También otro usuario comentó que había mucho color y no había alguna imagen como parte del diseño.
+
+Todo este feedback sirve para el crecimiento del producto.
 
 
 ## Maquetación 
@@ -152,3 +191,9 @@ Con la documentación que se encuentra en la misma página web, hemos podido imp
 ## Test
 
 Realizar los tests ha sido bastante complicado debido al uso de Firebase. Aún estamos tratando de realizar los test. Intentamos con el Firebase Mock para evitar usar el mismo Firebase, pero todavía no funciona el testing. 
+
+#### Metodología y organización
+
+Usamos la metodología ágil para desarrollar este producto. Además del Kanban utilizamos Trello para la organización.
+
+![Sin titulo](/img/trello.jpg)
