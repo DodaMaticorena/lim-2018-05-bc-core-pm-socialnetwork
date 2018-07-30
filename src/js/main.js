@@ -26,9 +26,11 @@ const dataPost = document.getElementById('dataPost');
 const closeCreate = document.getElementById('close-create');
 const buttonsCategory = document.getElementById('buttons-category');
 const showCategories = document.getElementById('show-categories');
+const hiddenForm = document.getElementById('hidden-form');
 
 let typePost = 'publico';
 let flagLateralMenu = 1;
+let flagPost = 0; //1 crear post - 2 editar post
 
 window.addEventListener('resize', () => {
   if (window.innerWidth <= 767) {
@@ -155,21 +157,35 @@ const userPost = (listUserPost) => {
     let newDate = day + '/' + month + '/' + year;
 
     let output = `<div class = "${listUserPost.id} post panel-login">
-    <h5 class="card-title">${listUserPost.title}</h5>
+    <div class="row">
+      <div class="col-10">
+        <h5 class="card-title">${listUserPost.title}</h5>
+      </div>
+      <div class="col-2 text-right">
+        <div class="btn-group">
+        <button type="button" class="btn btn-light dropdown-toggle no-arrow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-v"></i>
+        </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="${listUserPost.id} dropdown-item" type="button" id="edit"><i class="fas fa-edit"></i> Editar</button>
+            <button class="${listUserPost.id} dropdown-item" type="button" id="delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <span class="category"><i class="far fa-folder-open"></i> ${listUserPost.category}</span>
     <span class="date"><i class="far fa-calendar-alt"></i> ${newDate}</span>
     <hr>
     <img class="card-img-top" src="http://images.estampas.com/2012/07/01/mascotas.jpg.525.0.thumb" width="40" height="350">
     <p class="card-text">${listUserPost.content}</p>     
     <div class = "buttonSel">
-    <button class = "${listUserPost.id} btn btn-light col-sm-3" id="edit">Editar <i class="fas fa-edit"></i></button>
-    <button class = "${listUserPost.id} btn btn-light col-sm-3" id="delete">Eliminar <i class="fas fa-trash-alt"></i></button>`;
+    <button class = "${listUserPost.id} btn btn-light col-sm-3" id="coment"><i class="far fa-comment-alt"></i> Comentar</button>`;
     if (listUserPost.likes > 0) {
-      output += `<button class = "${listUserPost.id} btn btn-light col-sm-3" id="like">Me gusta <i class="far fa-thumbs-up"></i> <span id="badge-${listUserPost.id}" class="badge badge-success">${listUserPost.likes}</span></button>
+      output += `<button class = "${listUserPost.id} btn btn-light col-sm-3" id="like"><i class="far fa-thumbs-up"></i> Me gusta <span id="badge-${listUserPost.id}" class="badge badge-success">${listUserPost.likes}</span></button>
       </div>
       </div>`;
     } else {
-      output += `<button class = "${listUserPost.id} btn btn-light col-sm-3" id="like">Me gusta <i class="far fa-thumbs-up"></i> <span id="badge-${listUserPost.id}" class="badge badge-success hidden">${listUserPost.likes}</span></button>
+      output += `<button class = "${listUserPost.id} btn btn-light col-sm-3" id="like"><i class="far fa-thumbs-up"></i> Me gusta <span id="badge-${listUserPost.id}" class="badge badge-success hidden">${listUserPost.likes}</span></button>
       </div>
       </div>`;
     }
@@ -209,7 +225,7 @@ inputTitle.addEventListener('focus', () => {
   $('#hidden-form').slideDown('slow');
   $('#close-create').show('fade', 500);
   
-  btnEditPost.style.display = 'none';
+  //btnEditPost.style.display = 'none';
 })
 
 let idPost = '';//Guardar id post
@@ -256,6 +272,9 @@ showPostElement.addEventListener('click', (event) => {
     dataPost.style.display = 'block';
     showPostElement.style.display = 'none';
     btnAddPost.style.display = 'none';
+
+    hiddenForm.style.display = 'block';
+    btnEditPost.style.display = 'block';
      
      console.log(postSelected[0].title);
      

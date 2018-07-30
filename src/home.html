@@ -12,17 +12,17 @@
 </head>
 
 <body>
-  <nav class="navbar fixed-top navbar-expand-md navbar-light" style="background-color: #35CD97">
+  <nav class="navbar fixed-top navbar-expand-md navbar-light">
     <span class="logo-home"><i class="fas fa-paw"></i></span><a class="navbar-brand" href="#">SoyTuPata</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse" id="navbarsExample04" style>
+    <div class="navbar-collapse collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio
+          <a class="nav-link" href="home.html">Inicio
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -45,20 +45,7 @@
   </nav>
   <div class="container container-new-post">
     <div class="row justify-content-center div-center">
-      <div class="col-md-3 col-sm-4">
-        <div class="lateral-menu">
-          <h5 class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Categorías</h5>
-          <button class="btn btn-success d-block d-sm-block d-md-none d-lg-none d-xl-none" id="show-categories">Categorías</button>
-          <ul id="buttons-category" class="list-group">
-            <li class="list-group-item"><a href="#" id="category-salud">Salud</a></li>
-            <li class="list-group-item"><a href="#" id="category-alimentacion">Alimentación</a></li>
-            <li class="list-group-item"><a href="#" id="category-adopcion">Adopción</a></li>
-            <li class="list-group-item"><a href="#" id="category-mascotas-perdidas">Mascotas Perdidas</a></li>
-            <li class="list-group-item"><a href="#" id="category-sos">SOS</a></li>
-            <li class="list-group-item"><a href="#" id="category-entretenimiento">Entretenimiento</a></li>
-          </ul>
-        </div>
-      </div>
+      
       <div class="col-md-7">
         <div class="row">
           <div id="dataPost" class="col-sm-12 div-form">
@@ -101,15 +88,27 @@
                       </div>
                     </div>
                 </div>
-                <button id="addPost" class="btn btn-primary">Publicar</button>
-                <button id="editPost" class="btn btn-primary">Actualizar</button>
+                <button id="addPost" class="btn btn-success btn-form-color">Publicar</button>
+                <button id="editPost" class="btn btn-success btn-form-color">Actualizar</button>
               </div>
-
-              
             </div>
           </div>
           <div id="showPost" class="col-sm-12 reverse">
           </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="lateral-menu">
+          <h5 class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Categorías</h5>
+          <button class="btn btn-success d-block d-sm-block d-md-none d-lg-none d-xl-none float-right" id="show-categories">Categorías</button>
+          <ul id="buttons-category" class="list-group custom-list">
+            <li class="list-group-item"><a href="#" id="category-salud">Salud</a></li>
+            <li class="list-group-item"><a href="#" id="category-alimentacion">Alimentación</a></li>
+            <li class="list-group-item"><a href="#" id="category-adopcion">Adopción</a></li>
+            <li class="list-group-item"><a href="#" id="category-mascotas-perdidas">Mascotas Perdidas</a></li>
+            <li class="list-group-item"><a href="#" id="category-sos">SOS</a></li>
+            <li class="list-group-item"><a href="#" id="category-entretenimiento">Entretenimiento</a></li>
+          </ul>
         </div>
       </div>
       
