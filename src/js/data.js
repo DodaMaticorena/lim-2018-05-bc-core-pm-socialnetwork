@@ -53,12 +53,11 @@ window.registerUserProfile = (dataUser) => {
 		email: dataUser.email,
 		picture: dataUser.picture
 	}, (error) => {
-		//	console.log(error, response)
-		//cb(error, user)
-		console.log(error)
-		console.log('error')
+		console.log(error);
+		console.log('error');
+		return false;
 	});
-	//return dataRegisterUser;
+	return true;
 }
 
 //Esta funcion permite relacionar al usuario con sus posts
@@ -78,17 +77,17 @@ window.createPost = (postData) => {
 window.editPost = (postId, postData) => {
 	const updates = {};
 	updates['/posts/' + postId] = postData;
-	//firebase.database().ref('/posts/' + postId).update(postData);
-	return firebase.database().ref().update(updates);
+	firebase.database().ref('/posts/' + postId).update(postData);
+	//return firebase.database().ref().update(updates);
+	return true;
 }
 
 //Lee los post para usarlos en el test
 window.getPostList = () => firebase.database().ref('posts').once('value');
 
 //Esta funcion permite eliminar posts
-window.deletePost = (postId, uid) => {
+window.deletePost = (postId) => {
 	firebase.database().ref('/posts/').child(postId).remove();
-	//firebase.database().ref('/user-posts/' + uid + '/').child(postId).remove();
 }
 
 //Funcion que calcula los likes que se da a un post
@@ -122,21 +121,6 @@ window.filterPosts = (postSorted, filterBy, valueFilter) => {
 		: postFiltered = postSorted;
 	return postFiltered;
 }
-/*
-window.filterUsers = (users, search) => {
-    if (search !== '') {
-
-        const filterUsersArray = users.filter(user => {
-
-            return user.name.toUpperCase().indexOf(search.toUpperCase()) !== -1;//Filtrar (case insensitive)
-        })
-        return filterUsersArray;
-
-    } else {
-        return users;
-    }
-};
-*/
 
 window.showMyPosts = (dataUser, filterBy, valueFilter, cb) => {
 	return getPostList()

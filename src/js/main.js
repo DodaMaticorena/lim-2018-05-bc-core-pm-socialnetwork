@@ -25,15 +25,15 @@ const showPostElement = document.getElementById('showPost');
 const dataPost = document.getElementById('dataPost');
 const closeCreate = document.getElementById('close-create');
 const buttonsCategory = document.getElementById('buttons-category');
-//const buttonsCategoryPost = document.getElementById('buttons-category-post');
 const showCategories = document.getElementById('show-categories');
 const myPosts = document.getElementById('my-posts');
 const hiddenForm = document.getElementById('hidden-form');
 const inputElement = document.getElementById('input-element');
 const searchButton = document.getElementById('search-button');
 const searchButtonPost = document.getElementById('search-button-post');
+const homeMenu = document.getElementById('home-menu');
+const profileMenu = document.getElementById('profile-menu');
 
-let typePost = 'publico';
 let flagLateralMenu = 1;
 let flagPost = 0; //1 crear post - 2 editar post
 let flagPublicPrivate = 1; //1 posts publicos - 2 mis posts
@@ -86,11 +86,10 @@ let postData = {
   state: null,
   likes: null,
   comentary: null
-
 };
 
 const postPublic = (listPost) => {
-  postsKeys = listPost.id;
+  //postsKeys = listPost.id;
   listPost.forEach(listPost => {
     //formateando fecha
     let date = listPost.date;
@@ -228,7 +227,15 @@ btnAddPost.addEventListener('click', () => {
   idPost = createPost(postData);
   //slideUp() funcion de jquery - oculta div
   $('#dataPost').slideUp('slow');
-  alert('se creo con exito')
+  swal({
+    type: 'success',
+    confirmButtonColor: '#009E66',
+    title: 'Se creó con éxito',
+    showConfirmButton: false,
+    
+    timer: 6000
+  })
+  //alert('Se creó con éxito')
   location.reload();
 })
 let postClassName = null;
@@ -256,12 +263,54 @@ showPostElement.addEventListener('click', (event) => {
 
   if (event.target.nodeName === "BUTTON" && event.target.id == 'delete') {
 
-    const postContentElement = document.getElementsByClassName(postClassName[0])[0]
+    const postContentElement = document.getElementsByClassName(postClassName[0])[0];
+//modificar ingles
+    const swalWithBootstrapButtons = swal.mixin({
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: false,
+    })
 
-    deletePost(postClassName[0], postData.uid);
-    alert('se eliminó post')
-
-    postContentElement.style.display = 'none';
+    swal({
+      title: '¿Estás seguro de eliminar la publicación?',
+      //text: "¿Estás seguro de eliminar la publicación?",
+      //type: 'warning',
+      showCancelButton: true,  
+      confirmButtonText: 'Sí, confirmar',
+      confirmButtonColor: '#35CD97',
+      cancelButtonText: 'No, cancelar',
+      cancelButtonColor: '#AEAEAE',
+      reverseButtons: true
+    })
+    .then((result) => {
+      if (result.value) {
+        // swalWithBootstrapButtons(
+        //   '¡Borrado!',
+        //   'Tu publicación ha sido borrada',
+        // )
+        deletePost(postClassName[0], postData.uid);
+        postContentElement.style.display = 'none';
+      } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel
+      ); //{
+      //   swalWithBootstrapButtons(
+      //     'Cancelado',
+      //   )
+      // }
+    })
+    /*
+    const confirmDelete = confirm('¿Estás seguro de eliminar la publicación?');
+    if (confirmDelete == true) {
+      deletePost(postClassName[0], postData.uid);
+      alert('Se eliminó la publicación');
+      postContentElement.style.display = 'none';
+    }
+    else {
+      return;
+    }*/
+    
+    
   }
 
   if (event.target.nodeName === "BUTTON" && event.target.id == 'like') {
@@ -285,21 +334,18 @@ btnEditPost.addEventListener('click', () => {
   postData.comentary = {};
 
   editPost(postClassName[0], postData);
-  alert('se editó post')
+  swal({
+    type: 'success',
+    confirmButtonColor: '#009E66',
+    title: 'Se editó post',
+    showConfirmButton: false,
+    
+    timer: 00020
+  })
+ // alert('se editó post')
 
   location.reload();
 });
-
-/* buttonsCategoryPost.addEventListener('click', (event) => {
-  showPostElement.innerHTML = '';
-  const callBack = (result) => {
-    postPublic(result);
-  }
-  const category = event.target.innerText;
-  if (event.target.nodeName === 'LI' || event.target.nodeName === 'A') {
-    showPosts('category', category, callBack);
-  }
-}) */
 
 buttonsCategory.addEventListener('click', (event) => {
   if (flagPublicPrivate === 1) {
@@ -327,7 +373,8 @@ buttonsCategory.addEventListener('click', (event) => {
 
 myPosts.addEventListener('click', () => {
   flagPublicPrivate = 2;
-
+  homeMenu.classList.remove('active');
+  profileMenu.classList.add('active');
   showPostElement.innerHTML = '';
   inputElement.value = ''
   //buttonsCategoryPost.style.display = 'none';
@@ -351,8 +398,9 @@ searchButtonPost.addEventListener('click', () => {
 searchButton.addEventListener('click', () => {
   showPostElement.innerHTML = ''; 
   const callBack = (result) => {
+    console.log(result);
     userPost(result);
   }
   const inputValue = inputElement.value;
-  showPosts('title', inputValue, callBack);
+  shoMyPosts('title', inputValue, callBack);
 })

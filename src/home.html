@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -24,13 +25,13 @@
 
     <div class="navbar-collapse collapse" id="navbar-menu">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item active" id="home-menu">
           <a class="nav-link" href="home.html">Inicio
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a id='my-posts' class="nav-link" href="#">Mi Perfil</a>
+        <li class="nav-item" id="profile-menu">
+          <a id="my-posts" class="nav-link" href="#">Mi Perfil</a>
         </li>
         <li class="nav-item">
           <a id="logOut" class="nav-link" href="#">Salir</a>
@@ -49,7 +50,6 @@
           </span>
         </div>
       </div>
-    </div>
     </div>
   </nav>
   <div class="container container-new-post">
@@ -133,26 +133,6 @@
               <a href="#">Entretenimiento</a>
             </li>
           </ul>
-          <!-- <ul id="buttons-category-post" class="list-group custom-list">
-            <li class="category-salud list-group-item" value="Salud">
-              <a href="#">Salud</a>
-            </li>
-            <li class="category-alimentacion list-group-item" value="Alimentación">
-              <a href="#">Alimentación</a>
-            </li>
-            <li class="category-adopcion list-group-item" value="Adopción">
-              <a href="#">Adopción</a>
-            </li>
-            <li class="category-mascotas-perdidas list-group-item" value="Mascotas pérdidas">
-              <a href="#">Mascotas pérdidas</a>
-            </li>
-            <li class="category-sos list-group-item" value="SOS">
-              <a href="#">SOS</a>
-            </li>
-            <li class="category-entretenimiento list-group-item" value="Entretenimiento">
-              <a href="#">Entretenimiento</a>
-            </li>
-          </ul> -->
         </div>
       </div>
     </div>
@@ -163,6 +143,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+  <link link="https://cdn.jsdelivr.net/npm/promise-polyfill" rel="stylesheet">
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 

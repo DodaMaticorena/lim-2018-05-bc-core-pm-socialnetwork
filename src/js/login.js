@@ -24,7 +24,6 @@ const eventLogin = document.getElementById('eventLogin');
 buttonLogin.addEventListener('click', () => {
   const callback = (error, result) => {
     if (!error) {
-      localStorage.setItem('email', result.email);
       location.href = 'home.html';
     } else {
       let errorCode = error.code;
@@ -62,7 +61,7 @@ buttonRegister.addEventListener('click', () => {
 			console.log(result.user.uid);
 			console.log(dataUser)
 			registerUserProfile(dataUser);
-			alert('El usuario ha sido registrado, Ahora ya puede ingresar');
+			alert('El usuario ha sido registrado. Ahora ya puede ingresar');
 			linkLogin.click();
 			email.value = result.user.email;
 			console.log(result.user.email);
