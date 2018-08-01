@@ -225,17 +225,6 @@ btnAddPost.addEventListener('click', () => {
   postData.comentary = {};
 
   idPost = createPost(postData);
-  //slideUp() funcion de jquery - oculta div
-  $('#dataPost').slideUp('slow');
-  swal({
-    type: 'success',
-    confirmButtonColor: '#009E66',
-    title: 'Se creó con éxito',
-    showConfirmButton: false,
-    
-    timer: 6000
-  })
-  //alert('Se creó con éxito')
   location.reload();
 })
 let postClassName = null;
@@ -264,52 +253,16 @@ showPostElement.addEventListener('click', (event) => {
   if (event.target.nodeName === "BUTTON" && event.target.id == 'delete') {
 
     const postContentElement = document.getElementsByClassName(postClassName[0])[0];
-//modificar ingles
-    const swalWithBootstrapButtons = swal.mixin({
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: false,
-    })
 
-    swal({
-      title: '¿Estás seguro de eliminar la publicación?',
-      //text: "¿Estás seguro de eliminar la publicación?",
-      //type: 'warning',
-      showCancelButton: true,  
-      confirmButtonText: 'Sí, confirmar',
-      confirmButtonColor: '#35CD97',
-      cancelButtonText: 'No, cancelar',
-      cancelButtonColor: '#AEAEAE',
-      reverseButtons: true
+    swal('¿Estás seguro de eliminar la publicación?', {
+      buttons: ['No, cancelar', 'Sí, confirmar'],
     })
-    .then((result) => {
-      if (result.value) {
-        // swalWithBootstrapButtons(
-        //   '¡Borrado!',
-        //   'Tu publicación ha sido borrada',
-        // )
+    .then((result)=>{
+      if(result==true){
         deletePost(postClassName[0], postData.uid);
         postContentElement.style.display = 'none';
-      } else if (
-        // Read more about handling dismissals
-        result.dismiss === swal.DismissReason.cancel
-      ); //{
-      //   swalWithBootstrapButtons(
-      //     'Cancelado',
-      //   )
-      // }
-    })
-    /*
-    const confirmDelete = confirm('¿Estás seguro de eliminar la publicación?');
-    if (confirmDelete == true) {
-      deletePost(postClassName[0], postData.uid);
-      alert('Se eliminó la publicación');
-      postContentElement.style.display = 'none';
-    }
-    else {
-      return;
-    }*/
-    
+      }
+    });
     
   }
 
@@ -334,16 +287,6 @@ btnEditPost.addEventListener('click', () => {
   postData.comentary = {};
 
   editPost(postClassName[0], postData);
-  swal({
-    type: 'success',
-    confirmButtonColor: '#009E66',
-    title: 'Se editó post',
-    showConfirmButton: false,
-    
-    timer: 00020
-  })
- // alert('se editó post')
-
   location.reload();
 });
 

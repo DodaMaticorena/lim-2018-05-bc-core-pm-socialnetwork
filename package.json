@@ -21,8 +21,7 @@
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",
     "opener": "^1.4.3",
-    "server": "^1.0.18",
-    "sweetalert2": "^7.26.9"
+    "server": "^1.0.18"
   },
   "devDependencies": {
     "firebase-mock": "^2.2.4",
