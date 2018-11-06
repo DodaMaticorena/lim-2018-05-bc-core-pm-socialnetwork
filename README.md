@@ -146,7 +146,7 @@ Usamos Figma para realizar el diseño de la idea que teníamos para la red socia
 
 [Link del Prototipo Desktop](https://www.figma.com/proto/GlXkQ89W0gJkBgm7usXQ8fiP/Pr-Red-Social-Desktop?scaling=min-zoom&node-id=1%3A2)
 
-[Link del Prototipo Móvil](https://www.figma.com/proto/F0WdstzVNrQ8AAp45HvU6rSg/Pr-Red-Social-Movil?scaling=min-zoom&node-id=2%3A6)
+[Link del Prototipo Móvil](https://www.figma.com/proto/F0WdstzVNrQ8AAp45HvU6rSg/Pr-Red-Social-Movil?scaling=scale-down&node-id=2%3A6)
 
 ![Sin titulo](/img/prototype-mobile.jpg)
 ![Sin titulo](/img/prototype-desktop.jpg)
